@@ -9,6 +9,6 @@ class NoteController extends Controller
 {
     public function index(Note $note)
     {
-        return $note->get();
+        return view('notes/index')->with(['notes' => $note->getPaginateByLimit()]);  
     }
 }
