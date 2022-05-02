@@ -10,6 +10,7 @@
     <body>
         <h1>Note Name</h1>
         <div class='notes'>
+            <p>[<a href='/notes/create'>create</a>]</p>
             @foreach ($notes as $note)
                 <div class='note'>
                     <h2 class='title'>

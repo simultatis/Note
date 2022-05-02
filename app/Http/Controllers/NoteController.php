@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Note;
-use Illuminate\Http\Request;
+use App\Http\Requests\NoteRequest;
 
 class NoteController extends Controller
 {
@@ -15,5 +15,17 @@ class NoteController extends Controller
     public function show(Note $note)
     {
     return view('notes/show')->with(['note' => $note]);
+    }
+    
+    public function create()
+    {
+    return view('notes/create');
+    }
+    
+    public function store(Note $note, NoteRequest $request) 
+    {
+        $input = $request['note'];
+        $note->fill($input)->save();
+        return redirect('/notes/' . $note->id);
     }
 }
