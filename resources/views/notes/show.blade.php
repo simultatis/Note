@@ -19,6 +19,7 @@
                 <p>{{ $note->body }}</p>    
             </div>
         </div>
+        <p class="edit">[<a href="/notes/{{ $note->id }}/edit">edit</a>]</p>
         <div class="footer">
             <a href="/notes">戻る</a>
         </div>
