@@ -11,4 +11,9 @@ class NoteController extends Controller
     {
         return view('notes/index')->with(['notes' => $note->getPaginateByLimit()]);  
     }
+    
+    public function show(Note $note)
+    {
+    return view('notes/show')->with(['note' => $note]);
+    }
 }

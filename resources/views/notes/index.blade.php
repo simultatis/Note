@@ -12,7 +12,9 @@
         <div class='notes'>
             @foreach ($notes as $note)
                 <div class='note'>
-                    <h2 class='title'>{{ $note->title }}</h2>
+                    <h2 class='title'>
+                        <a href="/notes/{{ $note->id }}">{{ $note->title }}</a>
+                    </h2>
                     <p class='body'>{{ $note->body }}</p>
                 </div>
             @endforeach
