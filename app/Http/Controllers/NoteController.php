@@ -41,4 +41,10 @@ class NoteController extends Controller
 
     return redirect('/notes/' . $note->id);
     }
+    
+    public function delete(Note $note)
+    {
+    $note->delete();
+    return redirect('/notes');
+}
 }

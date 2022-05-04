@@ -12,6 +12,11 @@
         <div class='notes'>
             <p>[<a href='/notes/create'>create</a>]</p>
             @foreach ($notes as $note)
+            <form action="/notes/{{ $note->id }}" id="form_{{ $note->id }}" method="post" style="display:inline">
+            @csrf
+            @method('DELETE')
+            <button type="submit">delete</button> 
+            </form>
                 <div class='note'>
                     <h2 class='title'>
                         <a href="/notes/{{ $note->id }}">{{ $note->title }}</a>
