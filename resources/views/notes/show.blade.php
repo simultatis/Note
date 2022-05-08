@@ -1,4 +1,6 @@
 <!DOCTYPE HTML>
+@extends('layouts.app')
+@section('content')
 <html lang="{{ str_replace("_", "-", app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -10,6 +12,8 @@
     </head>
     
     <body>
+        Auth::user()->name
+        
         <h1 class="title">
             {{ $note->title }}
         </h1>
@@ -24,4 +28,5 @@
             <a href="/notes">戻る</a>
         </div>
     </body>
-    </html>
+</html>
+@endsection

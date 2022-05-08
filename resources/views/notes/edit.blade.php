@@ -1,4 +1,6 @@
 <!DOCTYPE HTML>
+@extends('layouts.app')
+@section('content')
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -6,6 +8,8 @@
     </head>
 
 <body>
+    Auth::user()->name
+    
     <h1 class="title">編集画面</h1>
     <div class="content">
         <form action="/notes/{{ $note->id }}" method="POST">
@@ -23,3 +27,4 @@
         </form>
     </div>
 </body>
+@endsection

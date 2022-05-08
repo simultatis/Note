@@ -66,5 +66,5 @@ class NoteController extends Controller
     {
     $note->delete();
     return redirect('/notes');
-}
+    }
 }

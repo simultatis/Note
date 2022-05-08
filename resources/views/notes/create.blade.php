@@ -1,4 +1,6 @@
 <!DOCTYPE HTML>
+@extends('layouts.app')
+@section('content')
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -6,6 +8,8 @@
     </head>
     
     <body>
+        Auth::user()->name
+        
         <h1>Note Name</h1>
         <form action="/notes" method="POST">
             @csrf
@@ -24,3 +28,4 @@
         <div class="back">[<a href="/notes">back</a>]</div>
     </body>
 </html>
+@endsection
