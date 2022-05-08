@@ -10,6 +10,12 @@
     <body>
         <h1>Note Name</h1>
         <div class='notes'>
+            //検索フォーム
+            <form method="GET" action="/search">
+            <input type="search" name="keyword" placeholder="ファイル名" value="{{$keyword}}">
+            <button type="submit">検索</button>
+            </form>
+            //投稿
             <p>[<a href='/notes/create'>create</a>]</p>
             @foreach ($notes as $note)
             <form action="/notes/{{ $note->id }}" id="form_{{ $note->id }}" method="post" style="display:inline">

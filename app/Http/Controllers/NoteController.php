@@ -4,13 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Note;
 use App\Http\Requests\NoteRequest;
+use Illuminate\Http\Request;
 
 class NoteController extends Controller
 {
-    public function index(Note $note)
+    public function index(Request $request, Note $note)
     {
-        return view('notes/index')->with(['notes' => $note->getPaginateByLimit()]);  
+        $keyword = $request->input('keyword');
+        return view('notes/index')->with(['notes' => $note->getPaginateByLimit(), 'keyword' => $keyword]);
     }
+    
+    public function search(Request $request, Note $note)
+    {
+        $keyword = $request->input('keyword');
+        $query = Note::query();
+        if($keyword){
+            $spaceConversion = mb_convert_kana($keyword, 's');
+            $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
+            foreach($wordArraySearched as $value) {
+                $query->where('title', 'like', '%'.$value.'%');
+            }
+            $note = $query->orderBy('updated_at', 'DESC')->paginate(20);
+        }else{
+            echo "見つかりませんでした。";
+        }
+         return view('notes/index')->with(['notes' => $note, 'keyword' => $keyword]);
+    }
+
     
     public function show(Note $note)
     {
